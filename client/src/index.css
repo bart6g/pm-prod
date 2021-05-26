@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+  background-color: #f4f6fb;
+}
+
+.tank {
+  border: 2px solid black;
+  padding: 10px 20px;
+  background-color: white;
+}
+
+.tank form {
+  display: flex;
+  flex-direction: column;
+}
+
+.flow-form {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 815px) {
+  .flow-form {
+    flex-direction: column;
+  }
+  .flow-form button {
+    margin-top: 20px;
+  }
+}
+
+.flow-form button {
+  margin-left: 20px;
+}
+
+.model-container {
+  display: flex;
+
+  /* height: 100vh; */
+}
+
+.model-learn {
+  width: 300px;
+  background-color: red;
+}
+.model-radio {
+  display: flex;
+  width: calc(100% - 300px);
+  margin-left: 10px;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  margin: 20px 0;
+}
+
+.login {
+  background-color: white;
+}
