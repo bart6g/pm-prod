@@ -123,7 +123,7 @@ export const simulate = (
     calculationArr.forEach((set) => {
       // let tempResult = calculate(set, tcalc, dt);
       let tempResult = axios
-        .post("http://localhost:5000/simulate", {
+        .post("/simulate", {
           set: set,
           tcalc: tcalc,
           dt: dt,

@@ -12,10 +12,7 @@ export const registerUser = (user) => async (dispatch) => {
   //user contains login, email, password & passwordRepeat
   try {
     console.log(user);
-    const response = await axios.post(
-      "http://localhost:5000/users/register",
-      user
-    );
+    const response = await axios.post("/users/register", user);
     if (response) {
       const { user, msg, success } = response.data;
       dispatch({
@@ -50,10 +47,7 @@ export const loginUser = (user) => async (dispatch) => {
   //user contains login & password
 
   try {
-    const response = await axios.post(
-      "http://localhost:5000/users/login",
-      user
-    );
+    const response = await axios.post("/users/login", user);
     if (response) {
       const { login, token, user, msg } = response.data;
       dispatch({
@@ -87,7 +81,7 @@ export const clearMsg = () => {
 
 export const fetchFromLocalStorage = (user, token) => async (dispatch) => {
   try {
-    const data = await axios.get("http://localhost:5000/users/get-userdata", {
+    const data = await axios.get("/users/get-userdata", {
       params: { id: user.id },
     });
     dispatch({
