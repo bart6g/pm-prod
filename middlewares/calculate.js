@@ -1,7 +1,7 @@
 exports.calculate = (set, time, dt) => {
   // console.log(set);
   const tempSet = set.filter((el) => el.id !== "255" && el.id !== "277");
-  console.log(tempSet);
+  // console.log(tempSet);
   let massArr = [];
   let volumeArr = [];
   tempSet.forEach((tank) => {
@@ -55,11 +55,11 @@ exports.calculate = (set, time, dt) => {
         // console.log("setout", parseFloat(tempSet[j - 1].out[n].fluxValue));
         // console.log("volume", volumeArr[j - 1]);
         // console.log("dt", dt);
-        // massOut =
-        //   (massResult[i - 1][j] *
-        //     parseFloat(tempSet[j - 1].out[n].fluxValue) *
-        //     dt) /
-        //     volumeArr[j - 1] || 0;
+        massOut =
+          (massResult[i - 1][j] *
+            parseFloat(tempSet[j - 1].out[n].fluxValue) *
+            dt) /
+            volumeArr[j - 1] || 0;
         // console.log("massOut sum", massOut);
         tempMass.push(-massOut);
       }
@@ -110,6 +110,6 @@ exports.calculate = (set, time, dt) => {
     tempConcentration = [];
     tempStandardConcentration = [];
   }
-
+  // console.log("done");
   return [concentrationResult, standardConcentrationResult];
 };
