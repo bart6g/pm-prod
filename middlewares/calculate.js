@@ -8,8 +8,8 @@ exports.calculate = (set, time, dt) => {
     massArr.push(parseFloat(tank.mass));
     volumeArr.push(parseFloat(tank.volume));
   });
-  console.log("massarr", massArr);
-  console.log("volarr", volumeArr);
+  // console.log("massarr", massArr);
+  // console.log("volarr", volumeArr);
   let standardMass = massArr.reduce((a, b) => a + b);
   let standardVolume = volumeArr.reduce((a, b) => a + b);
   let massResult = [];
@@ -41,67 +41,67 @@ exports.calculate = (set, time, dt) => {
     tempStandardConcentration[0] = parseFloat((dt * i).toFixed(1));
     let rowLength = massResult[0].length;
     for (let j = 1; j < rowLength; j++) {
-      console.log("massResult[i-1][j]", massResult[i - 1][j]);
+      // console.log("massResult[i-1][j]", massResult[i - 1][j]);
       let inArrLength = tempSet[j - 1].in.length;
-      console.log("inArr", inArrLength, "set[j - 1].in", tempSet[j - 1].in);
+      // console.log("inArr", inArrLength, "set[j - 1].in", tempSet[j - 1].in);
       let outArrLength = tempSet[j - 1].out.length;
-      console.log("out", tempSet[j - 1].in);
-      console.log("out", outArrLength, "set[j - 1].out", tempSet[j - 1].out);
+      // console.log("out", tempSet[j - 1].in);
+      // console.log("out", outArrLength, "set[j - 1].out", tempSet[j - 1].out);
       let massIn = 0;
       let massOut = 0;
 
       for (let n = 0; n < outArrLength; n++) {
-        console.log("mass out", massResult[i - 1][j]);
-        console.log("setout", parseFloat(tempSet[j - 1].out[n].fluxValue));
-        console.log("volume", volumeArr[j - 1]);
-        console.log("dt", dt);
-        massOut =
-          (massResult[i - 1][j] *
-            parseFloat(tempSet[j - 1].out[n].fluxValue) *
-            dt) /
-            volumeArr[j - 1] || 0;
-        console.log("massOut sum", massOut);
+        // console.log("mass out", massResult[i - 1][j]);
+        // console.log("setout", parseFloat(tempSet[j - 1].out[n].fluxValue));
+        // console.log("volume", volumeArr[j - 1]);
+        // console.log("dt", dt);
+        // massOut =
+        //   (massResult[i - 1][j] *
+        //     parseFloat(tempSet[j - 1].out[n].fluxValue) *
+        //     dt) /
+        //     volumeArr[j - 1] || 0;
+        // console.log("massOut sum", massOut);
         tempMass.push(-massOut);
       }
 
       for (let m = 0; m < inArrLength; m++) {
-        console.log("index", tempSet[j - 1].in[m].source);
-        console.log(
-          "mass in",
-          massResult[i - 1][parseInt(tempSet[j - 1].in[m].source)]
-        );
-        console.log("set in", parseFloat(tempSet[j - 1].in[m].fluxValue));
-        console.log(
-          "volume",
-          volumeArr[parseInt(tempSet[j - 1].in[m].source) - 1]
-        );
-        console.log("dt", dt);
+        // console.log("index", tempSet[j - 1].in[m].source);
+        // console.log(
+        //   "mass in",
+        //   massResult[i - 1][parseInt(tempSet[j - 1].in[m].source)]
+        // );
+        // console.log("set in", parseFloat(tempSet[j - 1].in[m].fluxValue));
+        // console.log(
+        //   "volume",
+        //   volumeArr[parseInt(tempSet[j - 1].in[m].source) - 1]
+        // );
+        // console.log("dt", dt);
 
         massIn =
           (massResult[i - 1][parseInt(tempSet[j - 1].in[m].source)] *
             parseFloat(tempSet[j - 1].in[m].fluxValue) *
             dt) /
             volumeArr[parseInt(tempSet[j - 1].in[m].source) - 1] || 0;
-        console.log("massIn sum", massIn);
+        // console.log("massIn sum", massIn);
         tempMass.push(massIn);
       }
-      console.log(tempMass);
+      // console.log(tempMass);
       let actMass = massResult[i - 1][j] + tempMass.reduce((a, b) => a + b);
-      console.log(
-        "actmass",
-        tempMass.reduce((a, b) => a + b)
-      );
+      // console.log(
+      //   "actmass",
+      //   tempMass.reduce((a, b) => a + b)
+      // );
       let concentration = actMass / volumeArr[j - 1];
       let standardConcentration =
         (concentration * standardVolume) / standardMass;
-      console.log("actmass", actMass);
+      // console.log("actmass", actMass);
       tempMass = [];
       massIn = 0;
       massOut = 0;
       tempMassResult[j] = actMass;
       tempConcentration[j] = concentration;
       tempStandardConcentration[j] = standardConcentration;
-      console.log("tempmassresult", tempMassResult);
+      // console.log("tempmassresult", tempMassResult);
     }
     massResult.push(tempMassResult);
     concentrationResult.push(tempConcentration);

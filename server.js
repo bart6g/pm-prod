@@ -3,13 +3,13 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const { calculate } = require("./middlewares/calculate");
+require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(cors());
-const PORT = 5000;
-
+const PORT = process.env.PORT || 5000;
 mongoose.connect(
-  "mongodb://localhost:27017/blog-app",
+  process.env.MONGODB_URI,
   { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false },
   (err) => {
     if (err) {
@@ -26,13 +26,13 @@ app.post("/simulate", (req, res) => {
   const { set, tcalc, dt } = req.body;
 
   let result = calculate(set, tcalc, dt);
-
-  // console.log(result);
   return res.json(result);
 });
-app.get("/", (req, res) => {
-  return res.json("hello");
-});
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);
 });
