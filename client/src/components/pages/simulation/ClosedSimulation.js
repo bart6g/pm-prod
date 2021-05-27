@@ -150,8 +150,8 @@ const ClosedSimulation = () => {
               <br />
               <br />
               {success ? (
-                <h3 style={{ color: "blue" }}>
-                  Symulacja przebiegła pomyślnie, przejdź do zakładki Result
+                <h3 style={{ color: "blue", marginBottom: "20px" }}>
+                  Symulacja przebiegła pomyślnie, przejdź do zakładki Wyniki
                 </h3>
               ) : null}
               <Button
@@ -204,14 +204,20 @@ const ClosedSimulation = () => {
                             <h1>Symulacja nr {indexOfSet} (model)</h1>
                             {set.map((tank, tankIndex) => (
                               <div key={tankIndex}>
-                                <h2>Tank {tankIndex + 1}</h2>m
-                                <sub>{tankIndex + 1}</sub> = {tank.mass} [kg]
-                                <br />V<sub>{tankIndex + 1}</sub> ={" "}
-                                {tank.volume} [m<sup>3</sup>]<h3>Flux</h3>
+                                <h2>Tank {tank.id}</h2>
+                                <h4>
+                                  {tank.label
+                                    ? `Nazwa podobszaru: ${tank.label}`
+                                    : ""}
+                                </h4>
+                                m<sub>{tank.id}</sub> = {tank.mass}
+                                <br />V<sub>{tank.id}</sub> = {tank.volume}
+                                <h3>Flux</h3>
                                 {tank.out.map((outObj) => (
                                   <>
                                     F<sub>{outObj.fluxName}</sub> ={" "}
-                                    {outObj.fluxValue} [m<sup>3</sup>/s]
+                                    {outObj.fluxValue}
+                                    <br />
                                   </>
                                 ))}
                               </div>
@@ -225,6 +231,11 @@ const ClosedSimulation = () => {
                             {set.map((tank, tankIndex) => (
                               <div key={tankIndex}>
                                 <h2>Tank {tankIndex + 1}</h2>
+                                <h4>
+                                  {tank.label
+                                    ? `Nazwa podobszaru: ${tank.label}`
+                                    : ""}
+                                </h4>
                                 <label>
                                   m<sub>{tankIndex + 1}</sub>
                                   <input

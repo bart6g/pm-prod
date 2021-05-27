@@ -154,8 +154,8 @@ const OpenSimulation = () => {
               <br />
               <br />
               {success ? (
-                <h3 style={{ color: "blue" }}>
-                  Symulacja przebiegła pomyślnie, przejdź do zakładki Result
+                <h3 style={{ color: "blue", marginBottom: "20px" }}>
+                  Symulacja przebiegła pomyślnie, przejdź do zakładki Wyniki
                 </h3>
               ) : null}
               <Button
@@ -203,7 +203,7 @@ const OpenSimulation = () => {
                 {calculationArr
                   ? calculationArr.map((set, indexOfSet) => {
                       if (indexOfSet === 0) {
-                        return <InfoSet set={set} index={indexOfSet} />;
+                        return <InfoSet set={set} indexSet={indexOfSet} />;
                       } else {
                         return (
                           <InfoSetContainer key={indexOfSet}>
@@ -212,9 +212,14 @@ const OpenSimulation = () => {
                               tank.id !== "277" && tank.id !== "255" ? (
                                 <div key={tankIndex}>
                                   <h2>
-                                    Tank {""}
+                                    Tank
                                     {tank.id}
                                   </h2>
+                                  <h4>
+                                    {tank.label
+                                      ? `Nazwa podobszaru: ${tank.label}`
+                                      : ""}
+                                  </h4>
                                   <label>
                                     m<sub>{tank.id}</sub>
                                     <input

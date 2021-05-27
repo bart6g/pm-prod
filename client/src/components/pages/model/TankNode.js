@@ -80,10 +80,10 @@ const TankNode = ({ data, id }) => {
             >
               <AiOutlineArrowRight style={{ pointerEvents: "none" }} />
             </Handle>
-            <h1>poczatek</h1>
-            <button onClick={() => console.log(tankState)}>state</button>
+            <h4>wejście</h4>
+
             <label>
-              IN
+              F<sub>w</sub>
               <input
                 type="text"
                 // onChange={(e) => {
@@ -96,7 +96,8 @@ const TankNode = ({ data, id }) => {
           </>
         ) : (
           <>
-            <h1>koniec</h1>
+            <h4>wyjście</h4>
+
             <Handle
               type="target"
               position="left"
@@ -139,10 +140,11 @@ const TankNode = ({ data, id }) => {
           </Handle>
           <div>TankID: {id}</div>
           <div>{data.label}</div>
-          <button onClick={() => console.log(tankState)}>state</button>
+          <br />
+          {/* <button onClick={() => console.log(tankState)}>state</button> */}
           <form>
             <label>
-              m{id}(t=0)
+              m<sub>{id}</sub>(t=0)
               <input
                 type="number"
                 onChange={(e) => handleMassOrVolumeChange(e, "mass")}
@@ -150,7 +152,7 @@ const TankNode = ({ data, id }) => {
             </label>
 
             <label>
-              V{id}
+              V<sub>{id}</sub>
               <input
                 type="number"
                 onChange={(e) => handleMassOrVolumeChange(e, "volume")}
@@ -161,7 +163,7 @@ const TankNode = ({ data, id }) => {
                   if (target.hasTarget !== "277") {
                     return (
                       <label key={target.fluxName}>
-                        {target.fluxName}
+                        F<sub>{target.fluxName}</sub>
                         <input
                           key={target.fluxName}
                           type="number"
@@ -177,7 +179,7 @@ const TankNode = ({ data, id }) => {
                   if (target.hasTarget === "277") {
                     return (
                       <label key={target.fluxName}>
-                        OUT
+                        F<sub>w</sub>
                         <input
                           key={target.fluxName}
                           type="number"

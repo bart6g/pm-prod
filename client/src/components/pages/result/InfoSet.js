@@ -40,12 +40,14 @@ const InfoSet = ({ set, indexSet }) => {
               {tank.id === "255" || tank.id === "277" ? (
                 tank.id === "255" ? (
                   <>
+                    <h3>Wejście</h3>
                     <p>
                       F<sub>w</sub> = {tank.out[0].fluxValue}
                     </p>
                   </>
                 ) : (
                   <>
+                    <h3>Wyjście</h3>
                     <p>
                       F<sub>w</sub> = {tank.in[0].fluxValue}
                     </p>
@@ -53,20 +55,20 @@ const InfoSet = ({ set, indexSet }) => {
                 )
               ) : (
                 <>
-                  <h2>Tank {tank.id}</h2>m<sub>{tank.id}</sub>(t=0) ={" "}
-                  {tank.mass} [kg]
-                  <br />V<sub>{tank.id}</sub> = {tank.volume} [m3]
+                  <h2>Tank {tank.id}</h2>
+                  <h4>{tank.label ? `Nazwa podobszaru: ${tank.label}` : ""}</h4>
+                  m<sub>{tank.id}</sub>(t=0) = {tank.mass}
+                  <br />V<sub>{tank.id}</sub> = {tank.volume}
                   <h4>Flux out</h4>
                   {tank.out.map((outObj) => (
                     <>
                       {outObj.target === "277" ? (
                         <aside>
-                          F<sub>w</sub> = {outObj.fluxValue} [m3/s]
+                          F<sub>w</sub> = {outObj.fluxValue}
                         </aside>
                       ) : (
                         <aside>
                           F<sub>{outObj.fluxName}</sub> = {outObj.fluxValue}{" "}
-                          [m3/s]
                         </aside>
                       )}
                     </>

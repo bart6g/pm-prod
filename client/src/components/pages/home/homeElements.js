@@ -88,3 +88,27 @@ export const Form = styled.form`
       }
     `}
 `;
+
+export const HomeContainer = styled.div`
+  max-width: 1350px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 50px 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    margin: 5px;
+    padding: 5px;
+    max-width: 100%;
+  }
+`;

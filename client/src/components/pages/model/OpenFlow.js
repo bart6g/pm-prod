@@ -57,6 +57,7 @@ const OpenFlow = () => {
 
     const newTankState = {
       id: `${tankId}`,
+      label: `${tankName}`,
       mass: 0,
       volume: 0,
       in: [],

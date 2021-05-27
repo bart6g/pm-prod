@@ -19,7 +19,13 @@ export const ModelLearn = () => {
                 <h3>Układ otwarty</h3>
                 <li>
                   Dodaj nowe podobszary, w tym celu kliknij przycisk "Dodaj",
-                  opcjonalnie reaktory mogą zostać nazwane.{" "}
+                  opcjonalnie reaktory mogą zostać nazwane.
+                </li>
+                <li>
+                  Reaktory "wejście" i "wyjście", imitują strumień wejściowy i
+                  wyjściowy z układu. Reaktor "wejście" musi zostać połączony z
+                  dodanym podobszarem, a ten musi zostać połączony z reaktorem
+                  wyjście.
                 </li>
                 <li>
                   Aby zdefiniować kierunek przepływu połącz podobszary. Strumień
@@ -28,9 +34,11 @@ export const ModelLearn = () => {
                   reaktora docelowego. Po każdym połączeniu pojawi się w
                   reaktorze nowe pole do zdefiniowania wartości przeływu.
                 </li>
+
                 <li>
-                  Uzupełnij wartość strumienia Vw, charakteryzującego kierunek
-                  przepływu.
+                  Uzupełnij wartość strumienia F<sub>w</sub>, charakteryzującego
+                  kierunek przepływu, w reaktorze "wejście" oraz w reaktorze
+                  połączonym z reaktorem "wyjście".
                 </li>
                 <li>
                   Uzupełnij wartości początkowe: masę i objętość pozostałych
@@ -39,7 +47,8 @@ export const ModelLearn = () => {
                 <li>
                   Kliknij przycisk "Sprawdź i zatwierdź". W przypadku błędu
                   walidacji (suma strumieni wpływających do reaktora musi być
-                  równa sumie wypływających), należy poprawić wartości strumieni
+                  równa sumie wypływających), należy poprawić wartości
+                  strumieni.
                 </li>
               </ol>
             </>

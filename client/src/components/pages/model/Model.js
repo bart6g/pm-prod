@@ -86,6 +86,7 @@ const Model = () => {
           <>
             <ModelLearn />
             <ModelRadio>
+              <h3 style={{ marginTop: "25px" }}>Rodzaj układu</h3>
               <RadioContainer>
                 <RadioGroup
                   aria-label="gender"

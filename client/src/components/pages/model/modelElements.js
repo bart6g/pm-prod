@@ -7,9 +7,9 @@ export const ModelContainer = styled.div`
 export const ModelLearnContainer = styled.div`
   width: ${({ isOpen }) => (isOpen ? "300px" : "50px")};
   background-color: ${({ isOpen }) => (isOpen ? "white" : "transparent")};
-  padding: 10px 10px;
+  padding: 30px 10px;
   padding-top: 50px;
-  height: calc(100vh - 80px);
+  height: 100%;
   ol {
     margin: 0 20px;
   }
