@@ -77,9 +77,12 @@ const ClosedSimulation = () => {
       tank.out.forEach((outObj) => tempArr.push(-outObj.fluxValue));
       fluxArr.push(tempArr.reduce((a, b) => a + b));
     });
+    console.log(fluxArr);
     const validationArray = fluxArr.map((el) =>
-      el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
+      // el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
+      el === 0 || el < 1e-8 ? 0 : 1
     );
+    console.log(validationArray);
     const validation = validationArray.reduce((a, b) => a + b);
     if (validation === 0) {
       return true;
@@ -189,6 +192,7 @@ const ClosedSimulation = () => {
                     >
                       Nowy set
                     </Button>
+                    {/* <button onClick={() => console.log(localSet)}>click</button> */}
                   </>
                 )}
 

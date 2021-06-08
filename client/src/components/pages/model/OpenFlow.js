@@ -186,10 +186,13 @@ const OpenFlow = () => {
       console.log(tempArr, "temparr");
       fluxArr.push(tempArr.reduce((a, b) => a + b));
     });
-    const isValid = fluxArr.reduce((a, b) => a + b);
-    console.log(isValid);
+    const validationArray = fluxArr.map((el) =>
+      el === 0 || el < 1e-8 ? 0 : 1
+    );
+    const validation = validationArray.reduce((a, b) => a + b);
+    console.log(validation);
 
-    if (isValid === 0) {
+    if (validation === 0) {
       //validation true
       let message =
         "Validation successfull, you will be pushed to simulation page, where you can add additional simulations";
