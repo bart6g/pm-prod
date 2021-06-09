@@ -18,7 +18,7 @@ const TankNode = ({ data, id }) => {
 
   const handleMassOrVolumeChange = (e, toChange) => {
     const prevState = { ...tankState };
-    prevState[toChange] = parseFloat(e.target.value);
+    prevState[toChange] = parseFloat(e.target.value.replace(/,/, "."));
     setTankState(prevState);
 
     const actualArr = [...stateArr];
@@ -36,7 +36,7 @@ const TankNode = ({ data, id }) => {
     const prevState = { ...tankState };
     prevState.out.forEach((outObj) =>
       outObj.fluxName === flux.fluxName
-        ? (outObj.fluxValue = parseFloat(e.target.value))
+        ? (outObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
         : outObj
     );
     setTankState(prevState);
@@ -48,7 +48,7 @@ const TankNode = ({ data, id }) => {
       index === tankIndex
         ? tank.in.forEach((inObj) =>
             inObj.source === id
-              ? (inObj.fluxValue = parseFloat(e.target.value))
+              ? (inObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
               : inObj
           )
         : tank
@@ -84,6 +84,7 @@ const TankNode = ({ data, id }) => {
 
             <label>
               F<sub>w</sub>
+              <button onClick={() => console.log(stateArr)}>click</button>
               <input
                 type="text"
                 // onChange={(e) => {

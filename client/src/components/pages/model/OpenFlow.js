@@ -172,24 +172,21 @@ const OpenFlow = () => {
   };
 
   const validation = () => {
-    console.log(stateArr);
     const actualStateArr = [...stateArr].filter(
       (tank) => tank.id !== "255" && tank.id !== "277"
     );
     const fluxArr = [];
-    console.log(openFlux);
-    console.log("state", actualStateArr);
     actualStateArr.forEach((tank) => {
       let tempArr = [];
       tank.in.forEach((inObj) => tempArr.push(-inObj.fluxValue));
       tank.out.forEach((outObj) => tempArr.push(outObj.fluxValue));
-      console.log(tempArr, "temparr");
       fluxArr.push(tempArr.reduce((a, b) => a + b));
     });
     const validationArray = fluxArr.map((el) =>
-      el === 0 || el < 1e-8 ? 0 : 1
+      el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
     );
     const validation = validationArray.reduce((a, b) => a + b);
+
     console.log(validation);
 
     if (validation === 0) {
@@ -205,6 +202,7 @@ const OpenFlow = () => {
       // validation failed
       let message = "Validation failed, please check fluxes in all the tanks";
       console.log(message);
+      alert(message);
       handlePageObj("model", false, message);
       return false;
     }

@@ -82,16 +82,16 @@ const OpenSimulation = () => {
     console.log(fluxArr);
     const validationArray = fluxArr.map((el) =>
       // el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
-      el === 0 || el < 1e-8 ? 0 : 1
+      el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
     );
     console.log("validationarr", validationArray);
     const validation = validationArray.reduce((a, b) => a + b);
     if (validation === 0) {
       console.log(true);
-      return true;
+      // return true;
     } else {
       console.log(false);
-      return false;
+      // return false;
     }
   };
 
