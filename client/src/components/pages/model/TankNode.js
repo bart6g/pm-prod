@@ -84,7 +84,6 @@ const TankNode = ({ data, id }) => {
 
             <label>
               F<sub>w</sub>
-              <button onClick={() => console.log(stateArr)}>click</button>
               <input
                 type="text"
                 // onChange={(e) => {

@@ -60,7 +60,7 @@ const Chart = ({ index, result }) => {
     },
     axisX: {
       title: "time ",
-      interval: 25,
+      interval: 500,
     },
     // axisX2: [
     //   {

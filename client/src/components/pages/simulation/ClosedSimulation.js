@@ -43,7 +43,9 @@ const ClosedSimulation = () => {
 
   const handleChangeMassAndVolume = (e, indexOfSet, tankIndex, toChange) => {
     const actualSet = [...localSet];
-    actualSet[indexOfSet][tankIndex][toChange] = parseFloat(e.target.value);
+    actualSet[indexOfSet][tankIndex][toChange] = parseFloat(
+      e.target.value.replace(/,/, ".")
+    );
     console.log(actualSet);
     setLocalSet(actualSet);
     setCalculationArr(actualSet);
@@ -54,13 +56,13 @@ const ClosedSimulation = () => {
     console.log(actualSet[indexOfSet]);
     actualSet[indexOfSet][tankIndex].out.forEach((outObj) =>
       outObj.fluxName === fluxName
-        ? (outObj.fluxValue = parseFloat(e.target.value))
+        ? (outObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
         : outObj
     );
     actualSet[indexOfSet].forEach((tank) =>
       tank.in.forEach((inObj) =>
         inObj.fluxName === fluxName
-          ? (inObj.fluxValue = parseFloat(e.target.value))
+          ? (inObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
           : inObj
       )
     );
@@ -139,7 +141,9 @@ const ClosedSimulation = () => {
                 label="Czas całkowity [s]"
                 variant="outlined"
                 className="login"
-                onChange={(e) => setTime(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  setTime(parseFloat(e.target.value.replace(/,/, ".")))
+                }
               />
               <br />
               <br />
@@ -148,7 +152,9 @@ const ClosedSimulation = () => {
                 label="Krok czasowy [s]"
                 variant="outlined"
                 className="login"
-                onChange={(e) => setStep(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  setStep(parseFloat(e.target.value.replace(/,/, ".")))
+                }
               />
               <br />
               <br />

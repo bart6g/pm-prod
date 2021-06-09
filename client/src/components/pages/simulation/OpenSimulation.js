@@ -43,7 +43,9 @@ const OpenSimulation = () => {
 
   const handleChangeMassAndVolume = (e, indexOfSet, tankIndex, toChange) => {
     const actualSet = [...localSet];
-    actualSet[indexOfSet][tankIndex][toChange] = parseFloat(e.target.value);
+    actualSet[indexOfSet][tankIndex][toChange] = parseFloat(
+      e.target.value.replace(/,/, ".")
+    );
     console.log(actualSet);
     setLocalSet(actualSet);
     setCalculationArr(actualSet);
@@ -54,13 +56,13 @@ const OpenSimulation = () => {
     console.log(actualSet[indexOfSet]);
     actualSet[indexOfSet][tankIndex].out.forEach((outObj) =>
       outObj.fluxName === fluxName
-        ? (outObj.fluxValue = parseFloat(e.target.value))
+        ? (outObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
         : outObj
     );
     actualSet[indexOfSet].forEach((tank) =>
       tank.in.forEach((inObj) =>
         inObj.fluxName === fluxName
-          ? (inObj.fluxValue = parseFloat(e.target.value))
+          ? (inObj.fluxValue = parseFloat(e.target.value.replace(/,/, ".")))
           : inObj
       )
     );
@@ -88,10 +90,10 @@ const OpenSimulation = () => {
     const validation = validationArray.reduce((a, b) => a + b);
     if (validation === 0) {
       console.log(true);
-      // return true;
+      return true;
     } else {
       console.log(false);
-      // return false;
+      return false;
     }
   };
 
@@ -141,7 +143,9 @@ const OpenSimulation = () => {
                 label="Czas całkowity [s]"
                 variant="outlined"
                 className="login"
-                onChange={(e) => setTime(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  setTime(parseFloat(e.target.value.replace(/,/, ".")))
+                }
               />
               <br />
               <br />
@@ -150,7 +154,9 @@ const OpenSimulation = () => {
                 label="Krok czasowy [s]"
                 variant="outlined"
                 className="login"
-                onChange={(e) => setStep(parseFloat(e.target.value))}
+                onChange={(e) =>
+                  setStep(parseFloat(e.target.value.replace(/,/, ".")))
+                }
               />
               <br />
               <br />
