@@ -183,7 +183,7 @@ const OpenFlow = () => {
       fluxArr.push(tempArr.reduce((a, b) => a + b));
     });
     const validationArray = fluxArr.map((el) =>
-      el === 0 || (el < 1e-8 && el > 0) ? 0 : 1
+      el === 0 || (el < 1e-8 && el > 0) || (el> -1e-8 && el<0) ? 0 : 1
     );
     const validation = validationArray.reduce((a, b) => a + b);
 
