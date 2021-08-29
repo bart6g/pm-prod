@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AppContainer } from "./components/common/commonElements";
+import Footer from "./components/footer/Footer";
 import Navbar from "./components/nav/Navbar";
 import Home from "./components/pages/home/Home";
 import Model from "./components/pages/model/Model";
@@ -131,12 +133,15 @@ const App = () => {
           handleCleanEverything,
         }}
       >
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/model" exact component={Model} />
-          <Route path="/simulation" exact component={Simulation} />
-          <Route path="/result" exact component={Result} />
-        </Switch>
+        <AppContainer>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/model" exact component={Model} />
+            <Route path="/simulation" exact component={Simulation} />
+            <Route path="/result" exact component={Result} />
+          </Switch>
+        </AppContainer>
+        <Footer />
       </TankContext.Provider>
     </Router>
   );

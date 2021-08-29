@@ -21,14 +21,9 @@ const OpenFlow = () => {
     setTanks,
     stateArr,
     setStateArr,
-    calculationArr,
     setCalculationArr,
-    setValidationError,
-    pageObj,
     handlePageObj,
     rynnowy,
-    setRynnowy,
-    openFlux,
   } = useContext(TankContext);
 
   const [tankName, setTankName] = useState("");
@@ -111,17 +106,14 @@ const OpenFlow = () => {
       actualStateArr.forEach((tank) => {
         if (tank.id === source) {
           tank.out.push(outFlux);
-          console.log("out pushed");
         }
       });
       actualStateArr.forEach((tank) => {
         if (tank.id === target) {
-          console.log("in pushed");
           tank.in.push(inFlux);
         }
       });
     }
-    console.log("statearr", actualStateArr);
     setAppElements(actualElements);
     setStateArr(actualStateArr);
   };
@@ -132,43 +124,13 @@ const OpenFlow = () => {
     myParams["animated"] = "true";
     myParams["borderRadius"] = "90";
     myParams["style"] = { stroke: "black" };
-    console.log("im here");
     addConnectionsToNode(params.source, params.target);
     setAppElements((els) => addEdge(myParams, els));
   };
 
   // TUTAJ DODAĆ KOLEJNE ELEMENTY USUWANIA
   const onElementsRemove = (elementsToRemove) => {
-    // const removingTank = elementsToRemove.filter(
-    //   (el) => el.type === "tankNode"
-    // );
-    // const removingTankId = removingTank[0].id;
-
-    // const actualStateArr = [...stateArr];
-    // const actualTanks = [...tanks];
-
-    // const filtredTanks = actualTanks.filter(
-    //   (tank) => tank.id !== removingTankId
-    // );
-
-    // const filtredState = actualStateArr.filter(
-    //   (tank) => tank.id !== removingTankId
-    // );
-    // // setStateArr(filtredState);
-    // filtredState.forEach((tank) =>
-    //   tank.in.filter((inObj) => inObj.source !== removingTank)
-    // );
-
-    // setStateArr(filtredState);
-    // // console.log("filtredState", filtredState);
-    // // console.log(removingTank);
-    // // console.log(tanks);
-    // setTanks(filtredTanks);
-    // // console.log(tanks);
     setAppElements((els) => removeElements(elementsToRemove, els));
-
-    // const actualAppElements = [...appElements];
-    // console.log("appElements", actualAppElements);
   };
 
   const validation = () => {
@@ -183,7 +145,7 @@ const OpenFlow = () => {
       fluxArr.push(tempArr.reduce((a, b) => a + b));
     });
     const validationArray = fluxArr.map((el) =>
-      el === 0 || (el < 1e-8 && el > 0) || (el> -1e-8 && el<0) ? 0 : 1
+      el === 0 || (el < 1e-8 && el > 0) || (el > -1e-8 && el < 0) ? 0 : 1
     );
     const validation = validationArray.reduce((a, b) => a + b);
 
@@ -245,9 +207,7 @@ const OpenFlow = () => {
           onConnect={onConnect}
           onElementsRemove={onElementsRemove}
           edgeTypes={{ arrowHeadType: "arrow" }}
-          // defaultZoom={1}
           style={{ height: "800px", width: "calc(100vw - 300px)" }}
-          // deleteKeyCode={46}
         >
           <Controls />
           <Background variant="dots" gap={10} size={1} />
